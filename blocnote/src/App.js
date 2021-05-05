@@ -6,6 +6,7 @@ import NoteDisplay from "./NoteDisplay";
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [activeNote, setActiveNote] = useState(false);
   const onAddNote = () => {
     const newNote = {
       id: uuid(),
@@ -18,7 +19,12 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar notes={notes} onAddNote={onAddNote} />
+      <Sidebar
+        notes={notes}
+        onAddNote={onAddNote}
+        activeNote={activeNote}
+        setActiveNote={setActiveNote}
+      />
       <NoteDisplay />
     </div>
   );

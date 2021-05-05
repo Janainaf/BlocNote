@@ -1,4 +1,4 @@
-function Sidebar({ notes, onAddNote }) {
+function Sidebar({ notes, onAddNote, onEditNote }) {
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
