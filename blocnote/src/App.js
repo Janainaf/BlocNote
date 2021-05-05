@@ -1,14 +1,25 @@
+import { useState } from "react";
+import uuid from "react-uuid";
 import "./App.css";
 import Sidebar from "./Sidebar";
 import NoteDisplay from "./NoteDisplay";
-import MarkdownInput from "./MarkdownInput";
 
 function App() {
+  const [notes, setNotes] = useState([]);
+  const onAddNote = () => {
+    const newNote = {
+      id: uuid(),
+      title: "Untitled Note",
+      body: "what",
+      lastModified: Date.now(),
+    };
+    setNotes([newNote, ...notes]);
+  };
+
   return (
     <div className="App">
-      <Sidebar />
+      <Sidebar notes={notes} onAddNote={onAddNote} />
       <NoteDisplay />
-      <MarkdownInput />
     </div>
   );
 }

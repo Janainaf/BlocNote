@@ -38,7 +38,7 @@ button:hover {
 /* SIDEBAR STYLES */
 
 .app-sidebar {
-  width: 20%;
+  width: 30%;
   height: 100vh;
   border-right: 1px solid #ddd;
 }
@@ -87,7 +87,7 @@ button:hover {
 /* NOTE EDITOR/PREVIEW (MAIN) STYLES */
 
 .app-main {
-  width: 35%;
+  width: 50%;
   height: 100vh;
 }
 .app-main-note-edit,
@@ -122,12 +122,21 @@ textarea {
   font-family: inherit;
 }
 .app-main-note-edit input {
-  height: 50px;
+  height: 80px;
   font-size: 2rem;
 }
 
 /* Preview */
+.app-main-note-preview {
+  border-top: 1px solid #ddd;
+  overflow-y: scroll;
+  background: rgba(0, 0, 0, 0.02);
+}
 
+.preview-title {
+  padding: 25px 25px 0 25px;
+  margin: 0;
+}
 .markdown-preview {
   padding: 0 25px 25px 25px;
   font-size: 1rem;

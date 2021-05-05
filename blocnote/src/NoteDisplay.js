@@ -1,3 +1,5 @@
+import MarkdownInput from "./MarkdownInput";
+
 function NoteDisplay() {
   return (
     <div className="app-main">
@@ -5,6 +7,7 @@ function NoteDisplay() {
         <input type="text" id="title" autoFocus />
         <textarea id="body" placeholder="write your note here..." />
       </div>
+      <MarkdownInput />
     </div>
   );
 }

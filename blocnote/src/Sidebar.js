@@ -1,18 +1,20 @@
-function Sidebar() {
+function Sidebar({ notes, onAddNote }) {
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
         <h1> Notes </h1>
-        <button> Add </button>
+        <button onClick={onAddNote}> Add </button>
       </div>
       <div className="app-sidebar-notes">
-        <div className="app-sidebar-note">
-          <div className="sidebar-note-title">
-            <strong> Title </strong>
-            <button> Delete </button>
+        {notes.map((note) => (
+          <div className="app-sidebar-note">
+            <div className="sidebar-note-title">
+              <strong> {note.title} </strong>
+              <button> Edit </button>
+            </div>
+            <p> {note.body && note.body.substr(0, 80) + "..."} </p>
           </div>
-          <p> Notes Preview </p>
-        </div>
+        ))}
       </div>
     </div>
   );
