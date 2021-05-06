@@ -1,4 +1,10 @@
-function Sidebar({ notes, onAddNote, onEditNote, activeNote, setActiveNote }) {
+function Sidebar({
+  notes,
+  onAddNote,
+  onDeleteNote,
+  activeNote,
+  setActiveNote,
+}) {
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
@@ -13,7 +19,7 @@ function Sidebar({ notes, onAddNote, onEditNote, activeNote, setActiveNote }) {
           >
             <div className="sidebar-note-title">
               <strong> {note.title} </strong>
-              <button onClick={() => onEditNote(note.id)}> Edit </button>
+              <button onClick={() => onDeleteNote(note.id)}> Delete </button>
             </div>
             <p> {note.body && note.body.substr(0, 80) + "..."} </p>
           </div>

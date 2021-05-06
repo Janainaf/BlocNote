@@ -11,14 +11,13 @@ function App() {
   const onAddNote = () => {
     const newNote = {
       id: uuid(),
-      title: "The title",
-      body: "what",
-      lastModified: Date.now(),
+      title: "Click to write your note",
+      body: "",
     };
     setNotes([newNote, ...notes]);
   };
 
-  const onEditNote = (idToDelete) => {
+  const onDeleteNote = (idToDelete) => {
     setNotes(notes.filter((note) => note.id !== idToDelete));
   };
 
@@ -26,16 +25,28 @@ function App() {
     return notes.find((note) => note.id === activeNote);
   };
 
+  const onUpdateNote = (updatedNote) => {
+    const updatedNotesArray = notes.map((note) => {
+      if (note.id === activeNote) {
+        return updatedNote;
+      }
+
+      return note;
+    });
+
+    setNotes(updatedNotesArray);
+  };
+
   return (
     <div className="App">
       <Sidebar
         notes={notes}
         onAddNote={onAddNote}
-        onEditNote={onEditNote}
+        onDeleteNote={onDeleteNote}
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
-      <NoteDisplay activeNote={getActiveNote()} />
+      <NoteDisplay activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
     </div>
   );
 }
