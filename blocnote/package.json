@@ -11,6 +11,7 @@
     "react-markdown": "^6.0.1",
     "react-scripts": "4.0.3",
     "react-uuid": "^1.0.2",
+    "showdown": "^1.9.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
