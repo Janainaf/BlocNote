@@ -3,7 +3,6 @@ import uuid from "react-uuid";
 import "./App.css";
 import Sidebar from "./Sidebar";
 import NoteDisplay from "./NoteDisplay";
-import MarkdownInput from "./MarkdownInput";
 
 function App() {
   const [notes, setNotes] = useState([]);

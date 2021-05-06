@@ -1,10 +1,18 @@
 import MarkdownInput from "./MarkdownInput";
 
 function NoteDisplay({ activeNote, onUpdateNote }) {
-  const onEditField = (key, value) => {
+  const onEditField = (value, bodyvalue) => {
     onUpdateNote({
+      title: value,
       id: activeNote.id,
-      [key]: value,
+      body: bodyvalue,
+    });
+  };
+  const onEditFieldBody = (value, titlevalue) => {
+    onUpdateNote({
+      body: value,
+      id: activeNote.id,
+      title: titlevalue,
     });
   };
   if (!activeNote)
@@ -17,14 +25,14 @@ function NoteDisplay({ activeNote, onUpdateNote }) {
           type="text"
           id="title"
           value={activeNote.title}
-          onChange={(e) => onEditField("title", e.target.value)}
+          onChange={(e) => onEditField(e.target.value, activeNote.body)}
           autoFocus
         />
         <textarea
           id="body"
           placeholder="write your note here..."
           value={activeNote.body}
-          onChange={(e) => onEditField("body", e.target.value)}
+          onChange={(e) => onEditFieldBody(e.target.value, activeNote.title)}
         />
       </div>
 
