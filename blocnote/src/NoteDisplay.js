@@ -1,13 +1,17 @@
 import MarkdownInput from "./MarkdownInput";
 
-function NoteDisplay() {
+function NoteDisplay({ activeNote }) {
+  if (!activeNote)
+    return <div className="no-active-note"> No note selected</div>;
+
   return (
     <div className="app-main">
       <div className="app-main-note-edit">
-        <input type="text" id="title" autoFocus />
+        <input type="text" id="title" value={activeNote.title} autoFocus />
         <textarea id="body" placeholder="write your note here..." />
       </div>
-      <MarkdownInput />
+
+      <MarkdownInput activeNote={activeNote} />
     </div>
   );
 }

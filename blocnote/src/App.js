@@ -3,6 +3,7 @@ import uuid from "react-uuid";
 import "./App.css";
 import Sidebar from "./Sidebar";
 import NoteDisplay from "./NoteDisplay";
+import MarkdownInput from "./MarkdownInput";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -10,11 +11,19 @@ function App() {
   const onAddNote = () => {
     const newNote = {
       id: uuid(),
-      title: "Untitled Note",
+      title: "The title",
       body: "what",
       lastModified: Date.now(),
     };
     setNotes([newNote, ...notes]);
+  };
+
+  const onEditNote = (idToDelete) => {
+    setNotes(notes.filter((note) => note.id !== idToDelete));
+  };
+
+  const getActiveNote = () => {
+    return notes.find((note) => note.id === activeNote);
   };
 
   return (
@@ -22,10 +31,11 @@ function App() {
       <Sidebar
         notes={notes}
         onAddNote={onAddNote}
+        onEditNote={onEditNote}
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
-      <NoteDisplay />
+      <NoteDisplay activeNote={getActiveNote()} />
     </div>
   );
 }
